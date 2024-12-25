@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crazyology</title>
+    <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+    <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+    <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.5/babel.min.js"></script>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            line-height: 1.5;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Crazyology</h1>
+    <p>Initial text content here.</p>
+    
+    <!-- React component will render here -->
+    <div id="react-root"></div>
+
+    <!-- Your React components go here -->
+    <script type="text/babel">
+        // Sample React component
+        const Welcome = () => {
+            return <h2>Welcome to Crazyology</h2>;
+        };
+
+        // Render component
+        ReactDOM.render(
+            <Welcome />,
+            document.getElementById('react-root')
+        );
+    </script>
+</body>
+</html>
