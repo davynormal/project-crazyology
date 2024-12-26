@@ -1,93 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crazyology - Art Basel Sales</title>
-    <!-- Load React -->
-    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
-    <!-- Load Recharts -->
-    <script crossorigin src="https://unpkg.com/recharts@2.1.12/umd/Recharts.min.js"></script>
-    <!-- Load Babel -->
-    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <title>Crazyology</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
-        body {
-            font-family: system-ui, -apple-system, sans-serif;
-            line-height: 1.5;
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        .card {
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 20px;
-            margin: 20px 0;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+        #chart { height: 400px; }
     </style>
 </head>
 <body>
-    <h1>Crazyology</h1>
-    <div id="react-root"></div>
+    <div class="container">
+        <h1>Crazyology</h1>
+        <canvas id="chart"></canvas>
+    </div>
 
-    <script type="text/babel">
-        const {
-            BarChart, Bar, XAxis, YAxis, CartesianGrid, 
-            Tooltip, Legend, ResponsiveContainer
-        } = window.Recharts;
-
-        const salesData = [
-            { gallery: "Pace Gallery", artist: "Jeff Koons", work: "Balloon Dog (Blue)", price: 12500000 },
-            { gallery: "Gagosian", artist: "Maurizio Cattelan", work: "Comedian (2024)", price: 6000000 },
-            { gallery: "David Zwirner", artist: "Yayoi Kusama", work: "Pumpkin", price: 4500000 },
-            { gallery: "Hauser & Wirth", artist: "Louise Bourgeois", work: "Spider Study", price: 3800000 },
-            { gallery: "Crazyology Projects", artist: "David Normal", work: "Parting Shot", price: 2400000 }
-        ];
-
-        const formatPrice = (value) => `$${(value / 1000000).toFixed(1)}M`;
-
-        const ArtBaselSales = () => (
-            <div className="card">
-                <h2>Art Basel Miami 2024 - Notable Sales</h2>
-                <div style={{ width: '100%', height: 400 }}>
-                    <ResponsiveContainer>
-                        <BarChart
-                            data={salesData}
-                            margin={{ top: 20, right: 30, left: 40, bottom: 60 }}
-                        >
-                            <CartesianGrid strokeDasharray="3 3" />
-                            <XAxis
-                                dataKey="work"
-                                angle={-45}
-                                textAnchor="end"
-                                interval={0}
-                                height={80}
-                            />
-                            <YAxis
-                                tickFormatter={formatPrice}
-                                label={{
-                                    value: 'Sale Price (USD)',
-                                    angle: -90,
-                                    position: 'insideLeft'
-                                }}
-                            />
-                            <Tooltip formatter={formatPrice} />
-                            <Bar dataKey="price" fill="#4f46e5" />
-                        </BarChart>
-                    </ResponsiveContainer>
-                </div>
-                <div style={{ marginTop: 20, fontSize: 14, color: '#666' }}>
-                    Source: Art Basel Miami 2024 Sales Reports & Interventions
-                </div>
-            </div>
-        );
-
-        ReactDOM.render(
-            <ArtBaselSales />,
-            document.getElementById('react-root')
-        );
+    <script>
+        const ctx = document.getElementById('chart');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Koons', 'Cattelan', 'Kusama', 'Bourgeois', 'Normal'],
+                datasets: [{
+                    data: [12.5, 6.0, 4.5, 3.8, 2.4],
+                    backgroundColor: '#4f46e5'
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            callback: value => '$' + value + 'M'
+                        }
+                    }
+                }
+            }
+        });
     </script>
 </body>
 </html>
