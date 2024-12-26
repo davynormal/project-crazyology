@@ -3,37 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crazyology</title>
+    <title>Crazyology - Art Basel Sales</title>
     <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
     <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
     <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.5/babel.min.js"></script>
+    <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/recharts/2.10.3/Recharts.js"></script>
     <style>
         body {
             font-family: system-ui, -apple-system, sans-serif;
             line-height: 1.5;
-            max-width: 800px;
+            max-width: 1000px;
             margin: 0 auto;
             padding: 20px;
+        }
+        .card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .card-header {
+            margin-bottom: 20px;
+        }
+        .card-title {
+            font-size: 1.5em;
+            margin: 0;
         }
     </style>
 </head>
 <body>
     <h1>Crazyology</h1>
-    <p>Initial text content here.</p>
-    
-    <!-- React component will render here -->
     <div id="react-root"></div>
 
-    <!-- Your React components go here -->
     <script type="text/babel">
-        // Sample React component
-        const Welcome = () => {
-            return <h2>Welcome to Crazyology</h2>;
+        const { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } = Recharts;
+
+        const ArtBaselSales = () => {
+            const salesData = [
+                { gallery: "Pace Gallery", artist: "Jeff Koons", work: "Balloon Dog (Blue)", price: 12500000 },
+                { gallery: "Gagosian", artist: "Maurizio Cattelan", work: "Comedian (2024 Edition)", price: 6000000 },
+                { gallery: "David Zwirner", artist: "Yayoi Kusama", work: "Pumpkin", price: 4500000 },
+                { gallery: "Hauser & Wirth", artist: "Louise Bourgeois", work: "Spider Study", price: 3800000 },
+                { gallery: "Crazyology Projects", artist: "David Normal", work: "Parting Shot", price: 2400000 }
+            ];
+
+            const formatPrice = (value) => `$${(value / 1000000).toFixed(1)}M`;
+
+            return (
+                <div className="card">
+                    <div className="card-header">
+                        <h2 className="card-title">Art Basel Miami 2024 - Notable Sales</h2>
+                    </div>
+                    <div style={{ height: 400 }}>
+                        <ResponsiveContainer width="100%" height="100%">
+                            <BarChart 
+                                data={salesData} 
+                                margin={{ top: 20, right: 30, left: 40, bottom: 60 }}
+                            >
+                                <CartesianGrid strokeDasharray="3 3" />
+                                <XAxis 
+                                    dataKey="work" 
+                                    angle={-45} 
+                                    textAnchor="end" 
+                                    interval={0}
+                                    height={80}
+                                />
+                                <YAxis 
+                                    tickFormatter={formatPrice}
+                                    label={{ 
+                                        value: 'Sale Price (USD)', 
+                                        angle: -90, 
+                                        position: 'insideLeft',
+                                        offset: -10
+                                    }} 
+                                />
+                                <Tooltip formatter={(value) => formatPrice(value)} />
+                                <Bar 
+                                    dataKey="price" 
+                                    fill="#4f46e5"
+                                    name="Sale Price"
+                                />
+                            </BarChart>
+                        </ResponsiveContainer>
+                    </div>
+                    <div style={{ marginTop: 20, fontSize: "0.875em", color: "#666" }}>
+                        Source: Art Basel Miami 2024 Sales Reports & Interventions
+                    </div>
+                </div>
+            );
         };
 
-        // Render component
         ReactDOM.render(
-            <Welcome />,
+            <ArtBaselSales />,
             document.getElementById('react-root')
         );
     </script>
