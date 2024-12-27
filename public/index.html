@@ -5,9 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crazyology</title>
     <link href="https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap" rel="stylesheet">
-    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
-    <script crossorigin src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
     <style>
         /* Reset default image styles */
         img {
@@ -227,38 +224,7 @@
             </div>
         </main>
 
-        <!-- Thumbnail Navigator -->
-        <div id="thumbnail-nav"></div> <!-- Root element for Thumbnail Navigator -->
-    </div>
-
-    <!-- Thumbnail Navigator Component -->
-    <script type="text/babel">
-      const thumbnail-nav = () => {
-        const [startIndex, setStartIndex] = React.useState(0);
-        const visibleCount = 4;
-
-        const articles = [
-          { id: 1, title: "Evolution of the Crazy", imagePath: "/images/thumbnails/evolution.jpg" },
-          { id: 2, title: "Method to the Madness", imagePath: "/images/thumbnails/method.jpg" },
-          // Add more articles...
-        ];
-
-        return (
-          <div>
-            {articles.slice(startIndex, startIndex + visibleCount).map(article => (
-              <div key={article.id}>
-                <img src={article.imagePath} alt={article.title} />
-                <p>{article.title}</p>
-              </div>
-            ))}
-            <button onClick={() => setStartIndex(Math.max(0, startIndex - visibleCount))}>Previous</button>
-            <button onClick={() => setStartIndex(Math.min(articles.length - visibleCount, startIndex + visibleCount))}>Next</button>
-          </div>
-        );
-      };
-
-      ReactDOM.render(<ThumbnailNavigator />, document.getElementById('thumbnail-nav'));
-    </script>
+      
 
     <script>
         document.querySelector('.hamburger').addEventListener('click', () => {
