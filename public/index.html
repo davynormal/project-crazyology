@@ -1,0 +1,261 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crazyology</title>
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap" rel="stylesheet">
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script crossorigin src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <style>
+        /* Reset default image styles */
+        img {
+            max-width: none;
+            width: auto;
+            height: auto;
+        }
+
+        /* Basic styles */
+        :root {
+            --background-dark: rgb(28, 28, 28);
+            --text-color: #fff;
+        }
+
+        body {
+            background-color: var(--background-dark);
+            color: var(--text-color);
+            font-family: 'Courier Prime', monospace;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        /* Typography */
+        h1, h2 {
+            font-family: 'Times New Roman', serif;
+            margin-top: 2em;
+        }
+
+        h1 { font-size: 2.5em; }
+        
+        h2 { 
+            font-size: 2em;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            padding-bottom: 0.3em;
+        }
+
+        /* Header Logo */
+        .logo-area {
+            padding-left: 60px;
+        }
+
+        .logo-area img {
+            width: 500px !important; /* Adjusted width */
+            height: 150 !important; /* Ensure the height adjusts accordingly */
+            display: block;
+        }
+
+        /* Article Image */
+        .article-image-container {
+            margin: 2rem 0;
+        }
+
+        .article-image {
+            width: 600px !important; /* Adjusted width */
+            height: auto !important; /* Ensure the height adjusts accordingly */
+            display: block;
+        }
+
+        .image-caption {
+            color: #cccccc;
+            font-style: italic;
+            margin-top: 0.5rem;
+            font-size: 0.9em;
+        }
+
+        /* Navigation */
+        .topnav {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            margin-left: auto;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+
+        /* Layout */
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 140px;
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .main-content {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            padding-left: 25px;
+        }
+
+        /* Lists */
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        ul li {
+            margin-bottom: 1em;
+            padding-left: 1.5em;
+            position: relative;
+        }
+
+        ul li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+        }
+
+        /* Next Article Link */
+        .next-article {
+            margin-top: 3rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: right;
+        }
+
+        .next-article a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+
+        /* Mobile Adjustments */
+        .hamburger { display: none; }
+
+        @media (max-width: 768px) {
+            .container { 
+                grid-template-columns: 1fr; 
+            }
+            
+            .sidebar { 
+                display: none; 
+            }
+            
+            .nav-links { 
+                display: none; 
+            }
+            
+            .hamburger { 
+                display: block;
+                cursor: pointer;
+            }
+            
+            .nav-links.active {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: rgba(0, 0, 0, 0.9);
+                padding: 1rem;
+            }
+            
+            .logo-area img {
+                width: 300px !important; /* Adjusted width for mobile */
+            }
+            
+            .article-image {
+                width: 100% !important; /* Full width on mobile */
+                max-width: 400px; /* But not larger than original */
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Navigation -->
+    <nav class="topnav">
+        <div class="logo-area">
+            <a href="index.html">
+                <img src="images/crazyology-log01-600x228-3-300x171.jpg" alt="Crazyology">
+            </a>
+        </div>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/about">About</a>
+            <a href="/projects">Projects</a>
+            <a href="/contact">Contact</a>
+            <a href="/links">Links</a>
+        </div>
+        <div class="hamburger">☰</div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Main Content -->
+        <main class="main-content">
+            <h1>Crazyology: The Evolution of the Crazy</h1>
+
+            <div class="article-image-container">
+                <img src="images/the-concert-in-the-egg-1480.jpg!Large.jpg" alt="The Concert in the Egg" class="article-image">
+                <div class="image-caption">
+                    "The Concert in the Egg" (After) Hieronymous Bosch c. 1561, Palais des Beaux-Arts de Lille
+                </div>
+            </div>
+
+            <!-- Your content here -->
+            <p>Crazyology emerged as a theoretical framework...</p>
+            
+            <!-- Rest of your content... -->
+
+            <div class="next-article">
+                <a href="method-madness.html">Next: The Method to the Madness →</a>
+            </div>
+        </main>
+
+        <!-- Thumbnail Navigator -->
+        <div id="thumbnail-nav"></div>
+    </div>
+
+    <!-- Thumbnail Navigator Component -->
+    <script type="text/babel">
+        const ThumbnailNavigator = () => {
+            const [startIndex, setStartIndex] = useState(0);
+            const visibleCount = 4;
+            
+            const articles = [
+                { id: 1, title: "Evolution of the Crazy", imagePath: "/images/thumbnails/evolution.jpg" },
+                { id: 2, title: "Method to the Madness", imagePath: "/images/thumbnails/method.jpg" },
+                // Add more articles...
+            ];
+            
+            // Rest of thumbnail navigator code...
+        };
+
+        ReactDOM.render(
+            <ThumbnailNavigator />,
+            document.getElementById('thumbnail-nav')
+        );
+    </script>
+
+    <script>
+        document.querySelector('.hamburger').addEventListener('click', () => {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
