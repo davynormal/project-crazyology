@@ -5,23 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crazyology</title>
     <link href="https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap" rel="stylesheet">
-    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
-    <script crossorigin src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
     <style>
-        /* Reset default image styles */
-        img {
-            max-width: none;
-            width: auto;
-            height: auto;
-        }
-
-        /* Basic styles */
         :root {
             --background-dark: rgb(28, 28, 28);
             --text-color: #fff;
         }
-
         body {
             background-color: var(--background-dark);
             color: var(--text-color);
@@ -30,51 +18,43 @@
             padding: 0;
             line-height: 1.6;
         }
-
-        /* Typography */
+        img {
+            max-width: none;
+            width: auto;
+            height: auto;
+        }
         h1, h2 {
             font-family: 'Times New Roman', serif;
             margin-top: 2em;
         }
-
         h1 { font-size: 2.5em; }
-        
         h2 { 
             font-size: 2em;
             border-bottom: 1px solid rgba(255, 255, 255, 0.2);
             padding-bottom: 0.3em;
         }
-
-        /* Header Logo */
         .logo-area {
             padding-left: 25px;
         }
-
         .logo-area img {
-            width: 400px !important; /* Adjusted width */
-            height: auto !important; /* Ensure the height adjusts accordingly */
+            width: 400px !important;
+            height: auto !important;
             display: block;
         }
-
-        /* Article Image */
         .article-image-container {
             margin: 2rem 0;
         }
-
         .article-image {
-            width: 600px !important; /* Adjusted width */
-            height: auto !important; /* Ensure the height adjusts accordingly */
+            width: 600px !important;
+            height: auto !important;
             display: block;
         }
-
         .image-caption {
             color: #cccccc;
             font-style: italic;
             margin-top: 0.5rem;
             font-size: 0.9em;
         }
-
-        /* Navigation */
         .topnav {
             background-color: rgba(0, 0, 0, 0.5);
             padding: 1rem;
@@ -85,20 +65,16 @@
             top: 0;
             z-index: 100;
         }
-
         .nav-links {
             display: flex;
             gap: 2rem;
             margin-left: auto;
         }
-
         .nav-links a {
             color: var(--text-color);
             text-decoration: none;
             font-size: 1.1rem;
         }
-
-        /* Layout */
         .container {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -107,65 +83,50 @@
             margin: 0 auto;
             padding: 2rem;
         }
-
         .main-content {
             font-size: clamp(1rem, 2vw, 1.2rem);
             padding-left: 25px;
         }
-
-        /* Lists */
         ul {
             list-style-type: none;
             padding-left: 0;
         }
-
         ul li {
             margin-bottom: 1em;
             padding-left: 1.5em;
             position: relative;
         }
-
         ul li:before {
             content: "•";
             position: absolute;
             left: 0;
         }
-
-        /* Next Article Link */
         .next-article {
             margin-top: 3rem;
             padding-top: 1rem;
             border-top: 1px solid rgba(255, 255, 255, 0.2);
             text-align: right;
         }
-
         .next-article a {
             color: var(--text-color);
             text-decoration: none;
             font-size: 1.2rem;
         }
-
-        /* Mobile Adjustments */
         .hamburger { display: none; }
-
         @media (max-width: 768px) {
             .container { 
                 grid-template-columns: 1fr; 
             }
-            
             .sidebar { 
                 display: none; 
             }
-            
             .nav-links { 
                 display: none; 
             }
-            
             .hamburger { 
                 display: block;
                 cursor: pointer;
             }
-            
             .nav-links.active {
                 display: flex;
                 flex-direction: column;
@@ -176,14 +137,12 @@
                 background-color: rgba(0, 0, 0, 0.9);
                 padding: 1rem;
             }
-            
             .logo-area img {
-                width: 300px !important; /* Adjusted width for mobile */
+                width: 300px !important;
             }
-            
             .article-image {
-                width: 100% !important; /* Full width on mobile */
-                max-width: 400px; /* But not larger than original */
+                width: 100% !important;
+                max-width: 400px;
             }
         }
     </style>
@@ -219,7 +178,6 @@
                 </div>
             </div>
 
-            <!-- Your content here -->
             <p>Crazyology emerged as a theoretical framework...</p>
 
             <div class="next-article">
@@ -227,23 +185,32 @@
             </div>
         </main>
 
-        <!-- Thumbnail Navigator -->
-        <div id="thumbnail-nav"></div> <!-- Root element for Thumbnail Navigator -->
-    </div>
+        <!-- Root element for React App -->
+        <div id="root"></div>
 
-    <!-- Include Thumbnail Navigator Component Script -->
-    <script crossorigin type="module">
-      import React from 'https://unpkg.com/react@17/umd/react.development.js';
-      import ReactDOM from 'https://unpkg.com/react-dom@17/umd/react-dom.development.js';
-      import ThumbnailNavigator from './src/components/ThumbnailNavigator.jsx';
+        <!-- Thumbnail Navigator Root -->
+        <div id="thumbnail-nav"></div>
 
-      ReactDOM.render(<ThumbnailNavigator />, document.getElementById('thumbnail-nav'));
-    </script>
+        <!-- Scripts to load React and the main bundle -->
+        <script src="/static/js/bundle.js"></script>
+        <script src="/static/js/1.chunk.js"></script>
+        <script src="/static/js/main.chunk.js"></script>
 
-    <script>
-        document.querySelector('.hamburger').addEventListener('click', () => {
-            document.querySelector('.nav-links').classList.toggle('active');
-        });
-    </script>
+        <!-- Script for ThumbnailNavigator component -->
+        <script crossorigin type="module">
+          import React from 'https://unpkg.com/react@17/umd/react.development.js';
+          import ReactDOM from 'https://unpkg.com/react-dom@17/umd/react-dom.development.js';
+          import ThumbnailNavigator from './src/components/ThumbnailNavigator.jsx';
+
+          const root = ReactDOM.createRoot(document.getElementById('thumbnail-nav'));
+          root.render(<ThumbnailNavigator />);
+        </script>
+
+        <!-- Script for navigation toggle -->
+        <script>
+            document.querySelector('.hamburger').addEventListener('click', () => {
+                document.querySelector('.nav-links').classList.toggle('active');
+            });
+        </script>
 </body>
 </html>

@@ -4,7 +4,7 @@ import { ChevronUp, ChevronDown } from 'lucide-react';
 const ThumbnailNavigator = () => {
     const [startIndex, setStartIndex] = useState(0);
     const visibleCount = 4;
-    
+
     // Sample articles with image paths
     const articles = [
         { 
@@ -38,7 +38,7 @@ const ThumbnailNavigator = () => {
             imagePath: "/images/thumbnails/empathy.jpg"
         }
     ];
-    
+
     const visibleArticles = articles.slice(startIndex, startIndex + visibleCount);
     const hasMore = startIndex + visibleCount < articles.length;
     const hasPrevious = startIndex > 0;

@@ -1,12 +1,11 @@
-// src/App.js
 import React from 'react';
-import ArtBaselSales from './components/ArtBaselSales';
+import ThumbnailNavigator from './components/ThumbnailNavigator';  // Import ThumbnailNavigator
 
 function App() {
   return (
     <div className="App">
-      <ArtBaselSales />
-    </div>
+      <ThumbnailNavigator />  
+    </div> // Add ThumbnailNavigator component
   );
 }
 
