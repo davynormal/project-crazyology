@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -45,12 +47,12 @@
 
         /* Header Logo */
         .logo-area {
-            padding-left: 60px;
+            padding-left: 25px;
         }
 
         .logo-area img {
-            width: 500px !important; /* Adjusted width */
-            height: 150 !important; /* Ensure the height adjusts accordingly */
+            width: 400px !important; /* Adjusted width */
+            height: auto !important; /* Ensure the height adjusts accordingly */
             display: block;
         }
 
@@ -99,7 +101,7 @@
         /* Layout */
         .container {
             display: grid;
-            grid-template-columns: 1fr 140px;
+            grid-template-columns: 1fr 1fr;
             gap: 2rem;
             max-width: 1400px;
             margin: 0 auto;
@@ -219,8 +221,6 @@
 
             <!-- Your content here -->
             <p>Crazyology emerged as a theoretical framework...</p>
-            
-            <!-- Rest of your content... -->
 
             <div class="next-article">
                 <a href="method-madness.html">Next: The Method to the Madness →</a>
@@ -228,28 +228,36 @@
         </main>
 
         <!-- Thumbnail Navigator -->
-        <div id="thumbnail-nav"></div>
+        <div id="thumbnail-nav"></div> <!-- Root element for Thumbnail Navigator -->
     </div>
 
     <!-- Thumbnail Navigator Component -->
     <script type="text/babel">
-        const ThumbnailNavigator = () => {
-            const [startIndex, setStartIndex] = useState(0);
-            const visibleCount = 4;
-            
-            const articles = [
-                { id: 1, title: "Evolution of the Crazy", imagePath: "/images/thumbnails/evolution.jpg" },
-                { id: 2, title: "Method to the Madness", imagePath: "/images/thumbnails/method.jpg" },
-                // Add more articles...
-            ];
-            
-            // Rest of thumbnail navigator code...
-        };
+      const thumbnail-nav = () => {
+        const [startIndex, setStartIndex] = React.useState(0);
+        const visibleCount = 4;
 
-        ReactDOM.render(
-            <ThumbnailNavigator />,
-            document.getElementById('thumbnail-nav')
+        const articles = [
+          { id: 1, title: "Evolution of the Crazy", imagePath: "/images/thumbnails/evolution.jpg" },
+          { id: 2, title: "Method to the Madness", imagePath: "/images/thumbnails/method.jpg" },
+          // Add more articles...
+        ];
+
+        return (
+          <div>
+            {articles.slice(startIndex, startIndex + visibleCount).map(article => (
+              <div key={article.id}>
+                <img src={article.imagePath} alt={article.title} />
+                <p>{article.title}</p>
+              </div>
+            ))}
+            <button onClick={() => setStartIndex(Math.max(0, startIndex - visibleCount))}>Previous</button>
+            <button onClick={() => setStartIndex(Math.min(articles.length - visibleCount, startIndex + visibleCount))}>Next</button>
+          </div>
         );
+      };
+
+      ReactDOM.render(<ThumbnailNavigator />, document.getElementById('thumbnail-nav'));
     </script>
 
     <script>
