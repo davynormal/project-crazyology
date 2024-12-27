@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crazyology</title>
     <link href="https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap" rel="stylesheet">
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script crossorigin src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
     <style>
         /* Reset default image styles */
         img {
@@ -224,7 +227,18 @@
             </div>
         </main>
 
-      
+        <!-- Thumbnail Navigator -->
+        <div id="thumbnail-nav"></div> <!-- Root element for Thumbnail Navigator -->
+    </div>
+
+    <!-- Include Thumbnail Navigator Component Script -->
+    <script crossorigin type="module">
+      import React from 'https://unpkg.com/react@17/umd/react.development.js';
+      import ReactDOM from 'https://unpkg.com/react-dom@17/umd/react-dom.development.js';
+      import ThumbnailNavigator from './src/components/ThumbnailNavigator.jsx';
+
+      ReactDOM.render(<ThumbnailNavigator />, document.getElementById('thumbnail-nav'));
+    </script>
 
     <script>
         document.querySelector('.hamburger').addEventListener('click', () => {
