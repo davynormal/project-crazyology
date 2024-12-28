@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crazyology</title>
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap" rel="stylesheet">
+    <style>
+    :root {
+        --background-dark: rgb(28, 28, 28);
+        --text-color: #fff;
+    }
+    body {
+        background-color: var(--background-dark);
+        color: var(--text-color);
+        font-family: 'Courier Prime', monospace;
+        margin: 0;
+        padding: 0;
+        line-height: 1.6;
+        display: flex;
+        justify-content: center;
+    }
+    .page-container {
+        width: 100%;
+        max-width: 1400px;  /* Adjust as needed */
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+    }
+    img {
+        max-width: none;
+        width: auto;
+        height: auto;
+    }
+    h1, h2 {
+        font-family: 'Times New Roman', serif;
+        margin-top: 2em;
+    }
+    h1 {
+        font-size: 2.5em;
+        margin-top: 0.5em;  /* Adjusted margin */
+        line-height: 1.2;   /* Adjusted line-height */
+    }
+    h2 { 
+        font-size: 2em;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        padding-bottom: 0.3em;
+    }
+    .logo-area {
+        padding-left: 25px;
+    }
+    .logo-area img {
+        width: 400px !important;
+        height: 100px !important;
+        display: block;
+    }
+    .article-image-container {
+        margin: 2rem 0;
+    }
+    .article-image {
+        width: 600px !important;
+        height: auto !important;
+        display: block;
+    }
+    .image-caption {
+        color: #cccccc;
+        font-style: italic;
+        margin-top: 0.5rem;
+        font-size: 0.9em;
+    }
+    .topnav {
+        background-color: rgba(0, 0, 0, 0.5);
+        padding: 1rem;
+        display: flex;
+        justify-content: center;  /* Center the navigation bar */
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+    }
+    .nav-links {
+        display: flex;
+        gap: 2rem;
+        margin-left: auto;
+        align-items: center;  /* Center items vertically */
+    }
+    .nav-links a {
+        color: var(--text-color);
+        text-decoration: none;
+        font-size: 1.1rem;
+    }
+		#root {
+    width: 300px;
+    background-color: #2e2e2e;
+    padding: 1rem;
+    position: sticky;
+    top: 1rem;
+    height: calc(100vh - 2rem);
+    overflow-y: auto;
+}
+		
+   .container {
+    display: grid;  /* Change from flex to grid */
+    grid-template-columns: 1fr 300px;  /* Fixed width for thumbnail column */
+    gap: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+    .main-content {
+        flex: 1;  /* Allow main content to take up available space */
+        font-size: clamp(1rem, 1vw, 1.2rem);
+        padding-left: 25px;
+        padding-top: 1rem;
+    }
+   
+    ul {
+        list-style-type: none;
+        padding-left: 0;
+    }
+    ul li {
+        margin-bottom: 1em;
+        padding-left: 1.5em;
+        position: relative;
+    }
+    ul li:before {
+        content: "•";
+        position: absolute;
+        left: 0;
+    }
+    .next-article {
+        margin-top: 3rem;
+        padding-top: 1rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+        text-align: right;
+    }
+    .next-article a {
+        color: var(--text-color);
+        text-decoration: none;
+        font-size: 1.2rem;
+    }
+    .hamburger { display: none; }
+    @media (max-width: 768px) {
+        .container { 
+            flex-direction: column;  /* Stack elements on smaller screens */
+        }
+        .sidebar { 
+            display: none; 
+        }
+        .nav-links { 
+            display: none; 
+        }
+        .hamburger { 
+            display: block;
+            cursor: pointer;
+        }
+        .nav-links.active {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background-color: rgba(0, 0, 0, 0.9);
+            padding: 1rem;
+        }
+        .logo-area img {
+            width: 300px !important;
+        }
+        .article-image {
+            width: 100% !important;
+            max-width: 400px;
+        }
+    }
+</style>
+</head>
+<body>
+    <div class="page-container">
+        <!-- Top Navigation -->
+        <nav class="topnav">
+            <div class="logo-area">
+                <a href="index.html">
+                    <img src="images/crazyology-log01-600x228-3-300x171.jpg" alt="Crazyology">
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="/about">About</a>
+                <a href="/projects">Projects</a>
+                <a href="/contact">Contact</a>
+                <a href="/links">Links</a>
+            </div>
+            <div class="hamburger">☰</div>
+        </nav>
+
+        <!-- Main Container -->
+        <div class="container">
+            <!-- Main Content -->
+            <main class="main-content">
+                <h1>Crazyology: The Evolution of the Crazy</h1>
+
+                <div class="article-image-container">
+                    <img src="images/the-concert-in-the-egg-1480.jpg!Large.jpg" alt="The Concert in the Egg" class="article-image">
+                    <div class="image-caption">
+                        "The Concert in the Egg" (After) Hieronymous Bosch c. 1561, Palais des Beaux-Arts de Lille
+                    </div>
+                </div>
+
+                <p>Crazyology emerged as a theoretical framework...</p>
+
+                <div class="next-article">
+                    <a href="method-madness.html">Next: The Method to the Madness →</a>
+                </div>
+            </main>
+
+            <!-- Thumbnail Navigator Root -->
+            <div id="thumbnail-nav"></div>
+        </div>
+		<div class="container">
+    <main class="main-content">
+        <!-- Your main content -->
+    </main>
+    <div id="root"></div>  <!-- Keep this as the React mounting point -->
+</div>
+       <!-- Script for navigation toggle -->
+        <script>
+            document.querySelector('.hamburger').addEventListener('click', () => {
+                document.querySelector('.nav-links').classList.toggle('active');
+            });
+        </script>
+    </div> <!-- End of page-container -->
+</body>
+
+</html>

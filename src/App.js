@@ -1,12 +1,14 @@
 import React from 'react';
-import ThumbnailNavigator from './components/ThumbnailNavigator';  // Import ThumbnailNavigator
+import ThumbnailNavigator from './components/ThumbnailNavigator'; // Adjust path as necessary
 
-function App() {
-  return (
-    <div className="App">
-      <ThumbnailNavigator />  
-    </div> // Add ThumbnailNavigator component
-  );
-}
+const App = () => {
+    return (
+        <div>
+            <h1>Welcome to Crazyology</h1>
+            <ThumbnailNavigator />
+        </div>
+    );
+};
 
 export default App;
+
